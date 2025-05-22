@@ -3,8 +3,8 @@ import Config from 'react-native-config';
 import Snackbar from 'react-native-snackbar';
 
 const appwriteClient = new Client();
-const APPWRITE_ENDPOINT: string = 'https://cloud.appwrite.io/v1';
-const APPWRITE_PROJECT_ID: string = '6798db0700136b4dfe8a';
+const APPWRITE_ENDPOINT = process.env.APPWRITE_ENDPOINT;
+const APPWRITE_PROJECT_ID = process.env.APPWRITE_PROJECT_ID;
 
 type CreateUserAccount = {
   email: string;
@@ -21,8 +21,8 @@ class AppwriteService {
   account;
 
   constructor() {
-    console.log('Initializing Appwrite with endpoint:', APPWRITE_ENDPOINT); // Debug log
-    console.log('Project ID:', APPWRITE_PROJECT_ID); // Debug log
+    console.log('Initializing Appwrite with endpoint:', APPWRITE_ENDPOINT); 
+    console.log('Project ID:', APPWRITE_PROJECT_ID);
 
     if (!APPWRITE_ENDPOINT || !APPWRITE_PROJECT_ID) {
       throw new Error('Appwrite endpoint or project ID is missing. Check your .env file.');
